@@ -12,6 +12,13 @@ class PostsController < ApplicationController
 
     @post.update(post_params)
 
+
+    if @author.save
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
+
     redirect_to post_path(@post)
   end
 
